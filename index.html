@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Dawn & Dusk — Official Game & Web Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-dawn">DAWN</span>
+                <span class="logo-amp">&</span>
+                <span class="logo-dusk">DUSK</span>
+            </div>
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#features">Features</a>
+                <a href="#demo">Live Encounter</a>
+                <a href="#pokedex">Pokédex (151)</a>
+                <a href="#download" class="btn-nav-download">Download APK</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg-glow"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="badge-tag">✨ Location & AR Adventure</div>
+                <h1 class="hero-title">
+                    POKÉMON<br>
+                    <span class="gradient-text">DAWN & DUSK</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Explore the real world, discover wild Pokémon around your GPS location, aim and throw Poké Balls with authentic physics, and complete your 151-species Pokédex.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#download" class="btn-primary">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download Android APK
+                    </a>
+                    <a href="#demo" class="btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                        Play Web Demo
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-val">151</span>
+                        <span class="stat-lbl">Gen 1 Pokémon</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-val">4</span>
+                        <span class="stat-lbl">Rarity Tiers</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-val">GPS</span>
+                        <span class="stat-lbl">Real-World Map</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="logo-card">
+                    <img src="images/logo.jpg" alt="Pokémon Dawn & Dusk Emblem" class="game-logo-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-features">
+        <div class="container">
+            <h2 class="section-title text-center">Engineered for Modern Mobile Adventure</h2>
+            <p class="section-desc text-center">Built with Jetpack Compose, Room SQLite, Fused Location, and dynamic projectile physics.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>GPS Radar & Spawning</h3>
+                    <p>Real-time player positioning, bounding-box calculation, weighted spawn distributions (Common 70%, Uncommon 20%, Rare 9%, Legendary 1%), and interaction radius validation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>AR Gyroscope & Throw Physics</h3>
+                    <p>Gyroscope orientation tracking with low-pass noise smoothing, drag-and-flick Pokéball physics, target ring contraction timing, and accuracy calculation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>151-Species Pokédex</h3>
+                    <p>Full Generation 1 creature catalog with types, attributes, capture history timestamps, and interactive historical GPS capture map.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Web Mini-Game Encounter Demo -->
+    <section id="demo" class="section-demo">
+        <div class="container">
+            <h2 class="section-title text-center">Interactive Web Encounter Demo</h2>
+            <p class="section-desc text-center">Drag and flick the Poké Ball to test the capture physics directly in your browser!</p>
+            
+            <div class="game-demo-container">
+                <div class="demo-hud">
+                    <div class="hud-target-info">
+                        <span id="target-name">Wild Bulbasaur</span>
+                        <span id="target-rarity" class="badge-rarity common">COMMON</span>
+                    </div>
+                    <div class="hud-balls">
+                        <span>Poké Balls: </span>
+                        <span id="balls-count" class="badge-gold">x10</span>
+                    </div>
+                </div>
+
+                <div class="canvas-wrapper">
+                    <canvas id="encounterCanvas" width="480" height="560"></canvas>
+                    <div id="game-overlay" class="game-overlay hidden">
+                        <div class="overlay-modal">
+                            <h3 id="overlay-title">Gotcha!</h3>
+                            <p id="overlay-message">Bulbasaur was caught!</p>
+                            <button id="btn-restart" class="btn-primary">Encounter Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-controls text-center">
+                    <p class="control-hint">💡 Click & drag from the bottom Poké Ball upwards toward the Pokémon to throw!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pokédex Explorer -->
+    <section id="pokedex" class="section-pokedex">
+        <div class="container">
+            <div class="pokedex-header">
+                <div>
+                    <h2 class="section-title">Kanto Pokédex Explorer</h2>
+                    <p class="section-desc">Search and view all 151 Generation 1 Pokémon available in Pokémon Dawn & Dusk.</p>
+                </div>
+                <div class="pokedex-search-box">
+                    <input type="text" id="dex-search" placeholder="Search by name or number (e.g. Pikachu, 025)...">
+                </div>
+            </div>
+
+            <div id="pokedex-grid" class="pokedex-grid">
+                <!-- Dynamically populated via app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Download APK Section -->
+    <section id="download" class="section-download">
+        <div class="container">
+            <div class="download-banner">
+                <div class="download-content">
+                    <h2>Ready to Catch 'Em All?</h2>
+                    <p>Download the latest build of Pokémon Dawn & Dusk for Android and begin your exploration journey today.</p>
+                    <div class="download-buttons">
+                        <a href="PokemonDawnAndDusk.apk" download class="btn-primary btn-large">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download APK (Android 7.0+)
+                        </a>
+                        <a href="https://github.com" target="_blank" class="btn-secondary btn-large">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>© 2026 Pokémon Dawn & Dusk. All rights reserved.</p>
+            <p class="footer-disclaimer">Inspired by classic Pokémon GO mechanics. Pokémon and Pokémon character names are trademarks of Nintendo / Creatures Inc. / GAME FREAK inc.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
